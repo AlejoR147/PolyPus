@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">smart</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="correo_electronico">Correo electronico</string>
+    <string name="inicio_de_sesion">Inicio de sesión</string>
+    <string name="iniciar_sesion">iniciar sesion</string>
+    <string name="smart_finance">smart finance</string>
+    <string name="registrarse">Registrarse</string>
+</resources>
