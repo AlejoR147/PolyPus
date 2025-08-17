@@ -35,8 +35,18 @@ En el primer lanzamiento de la app, se espera que cuente con algunas funcionalid
 >[!Note]
 >En un futuro peude que se agregen mas funciones.
 ---
-![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 >## 👥 Autores
->- 👩 Estefania Chica Galvis  
->- 👨 Julian Garcia Cardenas  
->- 👨 Ronan Alejandro Roman Bedoya  
+><!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+><table>
+>  <tr>
+>    <td align="center"><a href="https://github.com/tefa1234-t"><img src="https://avatars.githubusercontent.com/tefa1234-t" width="80px;" alt=""/><br /><sub> 
+> <b>Estefania Chica</b></sub></a></td>
+>     <td align="center"><a href="https://github.com/Bananomggt"><img src="https://avatars.githubusercontent.com/Bananomggt" width="80px;" alt=""/><br /><sub><b>Julian 
+> Garcia</b></sub></a></td>
+>     <td align="center"><a href="https://github.com/AlejoR147"><img src="https://avatars.githubusercontent.com/AlejoR147" width="80px;" alt=""/><br /><sub><b>Ronan 
+> Roman</b></sub></a></td>
+>  </tr>
+> </table>
+><!-- ALL-CONTRIBUTORS-LIST:END -->
+![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+ 
