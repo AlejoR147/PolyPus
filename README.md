@@ -49,4 +49,6 @@ En el primer lanzamiento de la app, se espera que cuente con algunas funcionalid
 > </table>
 ><!-- ALL-CONTRIBUTORS-LIST:END -->
 ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![kotlin](https://img.shields.io/badge/Kotlin-B125EA?style=for-the-badge&logo=kotlin&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
  
