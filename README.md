@@ -1,6 +1,6 @@
 <p align='center'>
  <a href='https://github.com/sponsors/alexandresanlim'>
-  <img width="540" height="296" alt="logo" src="https://github.com/user-attachments/assets/df5e2af1-1805-4e29-bd26-3a90e3aaf7db" />
+  <img width="540" height="296" alt="Smart Finance" src="https://github.com/user-attachments/assets/3d7a340d-7e71-4c5e-a940-5b0a233b3b87" />
  </a>
 </p>
 
