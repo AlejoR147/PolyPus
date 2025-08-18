@@ -33,7 +33,7 @@ En el primer lanzamiento de la app, se espera que cuente con algunas funcionalid
 | Metas de ahorro    | ✅ |
 | Conexión bancaria  | ❌ |
 >[!Note]
->En un futuro peude que se agregen mas funciones.
+>En un futuro puede que se agreguen más funciones.
 ---
 >## 👥 Autores
 ><!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
