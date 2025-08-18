@@ -1,3 +1,9 @@
+<p align='center'>
+ <a href='https://github.com/sponsors/alexandresanlim'>
+  <img width="540" height="296" alt="logo" src="https://github.com/user-attachments/assets/df5e2af1-1805-4e29-bd26-3a90e3aaf7db" />
+ </a>
+</p>
+
 # Smart Finance 💰📱
 
 > **Aplicación móvil educativa** para promover la **educación financiera** en jóvenes y personas de estratos bajos.  
