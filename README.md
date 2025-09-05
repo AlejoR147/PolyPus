@@ -1,13 +1,14 @@
 <p align='center'>
  <a href='https://github.com/sponsors/alexandresanlim'>
-<img width="300" height="500" alt="image-removebg-preview (6)" src="https://github.com/user-attachments/assets/2e374156-75a8-472f-ac77-569b8195ea6f" />
 
 
+<img width="300" height="3125" alt="kgmhD8j87cjiOGqBKgJOk" src="https://github.com/user-attachments/assets/0c8d55bc-de84-4c15-8b8e-9f2b824671e4" />
 
  </a>
 </p>
 
 # PolyPus 💰📱
+
 
 > **Aplicación móvil educativa** para promover la **educación financiera** en jóvenes y personas de estratos bajos.  
 > Ayuda a **gestionar ingresos, gastos y ahorros**, mientras enseña hábitos saludables de manejo del dinero.
