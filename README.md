@@ -1,6 +1,8 @@
 <p align='center'>
  <a href='https://github.com/sponsors/alexandresanlim'>
-<img width="300" height="300" alt="LOGO" src="https://github.com/user-attachments/assets/6e06e01d-bfe7-446d-ac5b-84973c003efb" />
+<img width="300" height="500" alt="image-removebg-preview (6)" src="https://github.com/user-attachments/assets/2e374156-75a8-472f-ac77-569b8195ea6f" />
+
+
 
  </a>
 </p>
