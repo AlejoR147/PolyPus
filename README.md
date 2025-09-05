@@ -2,7 +2,7 @@
  <a href='https://github.com/sponsors/alexandresanlim'>
 
 
-<img width="300" height="3125" alt="kgmhD8j87cjiOGqBKgJOk" src="https://github.com/user-attachments/assets/0c8d55bc-de84-4c15-8b8e-9f2b824671e4" />
+<img width="350" height="3125" alt="I-6Iuxp9LTDb8y5D-Oil2" src="https://github.com/user-attachments/assets/548b79ce-3940-4f1a-88f5-0c48fa5548e2" />
 
  </a>
 </p>
