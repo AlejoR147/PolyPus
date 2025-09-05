@@ -1,10 +1,11 @@
 <p align='center'>
  <a href='https://github.com/sponsors/alexandresanlim'>
-  <img width="540" height="296" alt="Smart Finance" src="https://github.com/user-attachments/assets/3d7a340d-7e71-4c5e-a940-5b0a233b3b87" />
+<img width="500" height="500" alt="LOGO" src="https://github.com/user-attachments/assets/6e06e01d-bfe7-446d-ac5b-84973c003efb" />
+
  </a>
 </p>
 
-# Smart Finance 💰📱
+# PolyPus 💰📱
 
 > **Aplicación móvil educativa** para promover la **educación financiera** en jóvenes y personas de estratos bajos.  
 > Ayuda a **gestionar ingresos, gastos y ahorros**, mientras enseña hábitos saludables de manejo del dinero.
