@@ -78,7 +78,7 @@
 
     <Button
         android:onClick="mostrarMenu"
-        android:id="@+id/registerButton"
+        android:id="@+id/singInButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
@@ -106,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+        app:layout_constraintTop_toBottomOf="@+id/singInButton" />
 
     <TextView
         android:id="@+id/textView3"
