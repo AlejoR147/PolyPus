@@ -100,6 +100,13 @@ MainActivity : AppCompatActivity() {
         startActivity(homeIntent)
     }
 
+    fun showRegistro(view: View) {
+        val intent = Intent(this, Registro::class.java)
+        startActivity(intent)
+        finish() // Cierra la actividad actual
+    }
+
+
     fun mostrarRegistro(view: View) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.registro)
