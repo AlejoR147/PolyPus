@@ -5,22 +5,80 @@ import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.smart.R.layout.activity_home
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 enum class ProviderType {
     BASIC
 }
 
-class
+public class
 HomeActivity : AppCompatActivity() {
 
+    FloatingActionButton fab;
+    DrawerLayout drawerLayaout;
+    BottomNavigationView bottomNavigationView;
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        fab = findViewById(R.id.fab);
+        drawerLayaout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toogle = new ActionBarDrawerToggle(this, drawerLayaout, toolbar, R.string.open_nav, R.string.close_nav)
+        drawerLayaout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        if (savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layaout, new HomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
+
+        replaceFragment(new HomeFragment());
+
+        binding.bottomNavigationView.setBackground(null);
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            switch (item.getItemId()) {
+                case R.id.home:
+                replaceFragment(new HomeFragment());
+                break;
+                case R.id.shorts:
+                replaceFragment(new ShortsFragment());
+                break;
+                case R.id.subscriptions:
+                replaceFragment(new SubscriptionFragment());
+                break;
+                case R.id.library:
+                replaceFragment(new LibraryFragment());
+                break;
+            }
+
+            return true;
+        });
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showBottomDialog();
+            }
+        });
+
+
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         WindowCompat.setDecorFitsSystemWindows(window, false)
