@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:background="@drawable/headerbkg"
+    android:background="@drawable/boton_redondeado"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
@@ -18,8 +18,8 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android Knowledge"
-        android:textColor="@color/black"
+        android:text="Usuario"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="contact@androidknowledge.com"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="14sp"/>
 
 </LinearLayout>

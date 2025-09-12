@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -28,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
     private FirebaseAuth mAuth;
-
+    private TextView emailTextView;
 
 
 
@@ -39,35 +41,22 @@ public class HomeActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
+        // Obtén la vista del header (el primer header, índice 0)
+        View headerView = navigationView.getHeaderView(0);
 
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        // Busca el TextView dentro del header
+        TextView emailTextView = headerView.findViewById(R.id.emailTextView);
 
-        // fuerza colores transparentes (API >= 21)
-        getWindow().setStatusBarColor(Color.blue(3));
-        getWindow().setNavigationBarColor(Color.TRANSPARENT);
-
-        // controla apariencia de iconos y comportamiento de las barras
-        WindowInsetsControllerCompat insetsController =
-                new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
-
-        // si quieres iconos oscuros en status bar pon true; si tu toolbar es oscuro, pon false
-        insetsController.setAppearanceLightStatusBars(true);
-        // iconos oscuros en navBar (opcional)
-        insetsController.setAppearanceLightNavigationBars(true);
-
-        // permite que las barras reaparezcan con swipe temporal
-        insetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
-
+        // Obtén el email del intent o usa "Invitado" por defecto
         String email = getIntent().getStringExtra("email");
         if (email == null) {
             email = "Invitado";
         }
 
-        String provider = getIntent().getStringExtra("provider");
-        if (provider == null) {
-            provider = "BASIC";
-        }
+        // Asigna el email al TextView del header
+        emailTextView.setText(email);
         // Inicializar Firebase
         mAuth = FirebaseAuth.getInstance();
 
