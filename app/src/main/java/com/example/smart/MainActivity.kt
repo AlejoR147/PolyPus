@@ -93,11 +93,12 @@ MainActivity : AppCompatActivity() {
     }
 
     private fun showHome(email: String, provider: ProviderType) {
-        val homeIntent = Intent(this, home::class.java).apply {
+        val homeIntent = Intent(this, HomeActivity::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)
         }
         startActivity(homeIntent)
+        finish() // <- evita que el usuario regrese al login
     }
 
     fun showRegistro(view: View) {

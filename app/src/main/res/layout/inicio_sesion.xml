@@ -68,12 +68,14 @@
 
     <Button
         android:id="@+id/loginButton"
+
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/boton_redondeado"
+        android:backgroundTint="@color/blue"
         android:padding="8dp"
         android:text="@string/iniciar_sesion"
         android:textColor="#FFFFFF"
@@ -91,7 +93,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/morado"
-        android:backgroundTint="@null"
+        android:backgroundTint="@color/blue2"
         android:onClick="mostrarMenu"
         android:padding="8dp"
         android:text="@string/registrarse"

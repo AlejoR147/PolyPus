@@ -5,8 +5,6 @@
     android:background="@drawable/headerbkg"
     android:gravity="bottom"
     android:orientation="vertical"
-
-    
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat">
 
@@ -31,6 +29,6 @@
         android:layout_marginBottom="16dp"
         android:text="contact@androidknowledge.com"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
 </LinearLayout>
