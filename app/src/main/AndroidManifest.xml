@@ -13,7 +13,14 @@
         android:theme="@style/Theme.Smart"
         tools:targetApi="31">
         <activity
+            android:name=".holaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.Smart.AppCompat"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
