@@ -1,6 +1,7 @@
 package com.example.smart
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,17 +10,19 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.smart.R.layout.inicio_sesion
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class
 MainActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
-
+    private lateinit var authLayaout : ConstraintLayout
     private lateinit var singInButton: Button
     private lateinit var loginButton: Button
 
@@ -34,16 +37,34 @@ MainActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordEditText)
         singInButton = findViewById(R.id.singInButton)
         loginButton = findViewById(R.id.loginButton)
+        authLayaout = findViewById(R.id.auth_layaout)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
             val systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
         setup()
+        sesion()
     }
 
+    override fun onStart() {
+        super.onStart()
+        authLayaout.visibility = View.VISIBLE
+    }
+
+
+    private fun sesion() {
+        //guardado de datos
+        val prefs = getSharedPreferences(getString(R.string.prefs), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+        val provider = prefs.getString("provider", null)
+        if (email != null && provider != null) {
+            authLayaout.visibility = View.INVISIBLE
+            showHome(email, ProviderType.valueOf(provider))
+        }
+    }
     private fun setup() {
         title = "Autenticación"
 
@@ -119,7 +140,7 @@ MainActivity : AppCompatActivity() {
     fun mostrarInicio(view: View) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.inicio_sesion)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -128,7 +149,7 @@ MainActivity : AppCompatActivity() {
     fun mostrarMenu(view: View) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.menu)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -137,7 +158,7 @@ MainActivity : AppCompatActivity() {
     fun mostrarAyuda(view: View) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.ayuda)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

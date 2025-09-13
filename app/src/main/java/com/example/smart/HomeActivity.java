@@ -1,7 +1,9 @@
 package com.example.smart;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -26,39 +28,44 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
     private BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
     private FirebaseAuth mAuth;
-    private TextView emailTextView;
+
 
 
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+
+        //Firebase
+        mAuth = FirebaseAuth.getInstance();
+
+        //Nav_view
         NavigationView navigationView = findViewById(R.id.nav_view);
-
-        // Obtén la vista del header (el primer header, índice 0)
         View headerView = navigationView.getHeaderView(0);
-
-        // Busca el TextView dentro del header
         TextView emailTextView = headerView.findViewById(R.id.emailTextView);
-
-        // Obtén el email del intent o usa "Invitado" por defecto
+        Bundle bundle = getIntent().getExtras();
+        String provider = getIntent().getStringExtra("provider");
+        if (provider == null) {
+            provider = "Basic";
+        }
         String email = getIntent().getStringExtra("email");
         if (email == null) {
             email = "Invitado";
         }
-
-        // Asigna el email al TextView del header
         emailTextView.setText(email);
-        // Inicializar Firebase
-        mAuth = FirebaseAuth.getInstance();
+        //guardado de datos
+
+
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("email", email);
+        editor.putString("provider", provider);
+        editor.apply();
 
         // Inicializar vistas
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -121,6 +128,11 @@ public class HomeActivity extends AppCompatActivity {
                     // Cerrar sesión en Firebase
                     mAuth.signOut();
                     Toast.makeText(HomeActivity.this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+                    //borarr datos
+                    SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.clear();
+                    editor.apply();
 
                     // Redirigir a LoginActivity
                     Intent intent = new Intent(HomeActivity.this, MainActivity.class);

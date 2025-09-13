@@ -10,6 +10,8 @@
     </style>
 
     <!-- Base application theme. -->
+
+
     <style name="Base.Theme.Smart" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorSecondary">@color/blue</item>

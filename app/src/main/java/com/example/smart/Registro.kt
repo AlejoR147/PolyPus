@@ -97,7 +97,7 @@ Registro : AppCompatActivity() {
     fun mostrarInicio(view: View) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.inicio_sesion)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -106,16 +106,17 @@ Registro : AppCompatActivity() {
     fun mostrarMenu(view: View) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.menu)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(ayuda)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
     }
+
     fun mostrarAyuda(view: View) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.ayuda)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
