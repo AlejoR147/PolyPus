@@ -5,7 +5,7 @@
     android:id="@+id/auth_layaout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#323338"
+    android:background="@drawable/adad"
     android:padding="30dp"
     tools:context=".MainActivity"
     >
