@@ -6,18 +6,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.smart.R.layout.ayuda
-import com.example.smart.R.layout.inicio_sesion
-import com.example.smart.R.layout.main
 import com.example.smart.R.layout.registro
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 
 class
@@ -29,6 +23,17 @@ Registro : AppCompatActivity() {
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        var provider = intent.getStringExtra("provider")
+        if (provider == null) {
+            provider = "Basic"
+        }
+        var email = intent.getStringExtra("email")
+        if (email == null) {
+            email = "Invitado"
+        }
+
+
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(registro) // tu XML se llama activity_main.xml

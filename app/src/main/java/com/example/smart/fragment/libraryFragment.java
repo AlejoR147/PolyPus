@@ -1,4 +1,4 @@
-package com.example.smart;
+package com.example.smart.fragment;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.smart.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ShortsFragment#newInstance} factory method to
+ * Use the {@link libraryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShortsFragment extends Fragment {
+public class libraryFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class ShortsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ShortsFragment() {
+    public libraryFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class ShortsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ShortsFragment.
+     * @return A new instance of fragment libraryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShortsFragment newInstance(String param1, String param2) {
-        ShortsFragment fragment = new ShortsFragment();
+    public static libraryFragment newInstance(String param1, String param2) {
+        libraryFragment fragment = new libraryFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class ShortsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shorts, container, false);
+        return inflater.inflate(R.layout.fragment_library, container, false);
     }
 }
