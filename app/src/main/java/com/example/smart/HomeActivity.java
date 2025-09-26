@@ -18,10 +18,10 @@ import androidx.core.view.GravityCompat;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.smart.fragment.HomeFragment;
-import com.example.smart.fragment.ShortsFragment;
-import com.example.smart.fragment.SubscripcionsFragment;
-import com.example.smart.fragment.libraryFragment;
+import com.example.smart.ui.HomeFragment;
+import com.example.smart.ui.ShortsFragment;
+import com.example.smart.ui.SubscripcionsFragment;
+import com.example.smart.ui.libraryFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationBarView;
