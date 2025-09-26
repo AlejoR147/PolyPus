@@ -85,25 +85,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
-    <Button
-        android:id="@+id/singInButton"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/morado"
-        android:backgroundTint="@color/blue2"
-        android:onClick="mostrarMenu"
-        android:padding="8dp"
-        android:text="@string/registrarse"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="250dp"
@@ -114,4 +95,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo1" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:onClick="mostrarRegistro"
+        android:text="No tienes una cuenta? crea una ya."
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
