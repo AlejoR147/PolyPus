@@ -4,25 +4,28 @@
 
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="Casa"
         android:icon="@drawable/baseline_home_24"/>
 
     <item
         android:id="@+id/shorts"
-        android:title="Shorts"
-        android:icon="@drawable/baseline_whatshot_24"
+        android:title="Datos"
+        android:icon="@drawable/baseline_analytics_24"
         />
 
     <item
+        android:id="@+id/placeholder"
+        android:enabled="false"
+        android:icon="@null"
         android:title=""/>
 
     <item
         android:id="@+id/subscriptions"
-        android:title="Subscriptions"
-        android:icon="@drawable/baseline_subscriptions_24"/>
+        android:title="Añadir"
+        android:icon="@drawable/baseline_add_circle_24"/>
     <item
         android:id="@+id/library"
-        android:title="Library"
-        android:icon="@drawable/baseline_video_library_24" />
+        android:title="Comunidad"
+        android:icon="@drawable/baseline_groups_24" />
 
 </menu>

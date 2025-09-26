@@ -3,10 +3,15 @@ package com.example.smart
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -23,8 +28,8 @@ MainActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var authLayaout : ConstraintLayout
-    private lateinit var singInButton: Button
     private lateinit var loginButton: Button
+    private lateinit var textView: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +40,6 @@ MainActivity : AppCompatActivity() {
         // Vinculamos los elementos del layout
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
-        singInButton = findViewById(R.id.singInButton)
         loginButton = findViewById(R.id.loginButton)
         authLayaout = findViewById(R.id.auth_layaout)
 
@@ -45,6 +49,21 @@ MainActivity : AppCompatActivity() {
             insets
         }
 
+        textView = findViewById(R.id.textView4)
+        val texto = "No tienes una cuenta? crea una ya."
+        val spannable = SpannableString(texto)
+
+        val target = "crea una ya."
+        val start = texto.indexOf(target)
+        val end = start + target.length
+
+        spannable.setSpan(
+            ForegroundColorSpan(Color.CYAN), // Cambia el color a tu gusto
+            start, end,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        textView.text = spannable
         setup()
         sesion()
     }
@@ -68,22 +87,7 @@ MainActivity : AppCompatActivity() {
     private fun setup() {
         title = "Autenticación"
 
-        // 🔹 Botón de REGISTRO
-        singInButton.setOnClickListener {
-            if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()) {
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-                    emailEditText.text.toString(),
-                    passwordEditText.text.toString()
-                ).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                        showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
-                    } else {
-                        showAlert()
-                    }
-                }
-            }
-        }
+
 
         // 🔹 Botón de LOGIN
         loginButton.setOnClickListener {
@@ -126,9 +130,6 @@ MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish() // Cierra la actividad actual
     }
-
-
-
 
 
 }
