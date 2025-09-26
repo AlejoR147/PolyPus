@@ -8,6 +8,10 @@
         <!-- Hace transparente la barra de navegación -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <style name="roundedCorner">
+            <item name="cornerFamily">rounded</item>
+            <item name="cornerSize">15dp"></item>
+        </style>
     </style>
 
     <style name="Base.Theme.Smart" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -32,7 +36,10 @@
 
     </style>
 
-
+    <style name="roundedCorner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15dp"></item>
+    </style>
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_in</item>
         <item name="android:windowExitAnimation">@anim/slide_out</item>

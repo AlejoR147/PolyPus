@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+glide = "4.13.0"
 kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -16,9 +17,12 @@ credentialsPlayServicesAuth = "1.5.0"
 googleid = "1.1.1"
 firebaseAuthKtx = "24.0.1"
 firebaseDatabase = "22.0.1"
+mpandroidchart = "v3.1.0"
+supportAnnotations = "28.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -30,8 +34,12 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
 androidx-credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
 googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
-firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+mpandroidchart = { module = "com.github.PhilJay:MpAndroidChart", version.ref = "mpandroidchart" }
+support-annotations = { group = "com.android.support", name = "support-annotations", version.ref = "supportAnnotations" }
+firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
+firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -7,6 +7,10 @@
         <!-- Hace transparente la barra de navegación -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <style name="roundedCorner">
+            <item name="cornerFamily">rounded</item>
+            <item name="cornerSize">15dp"></item>
+        </style>
     </style>
 
     <!-- Base application theme. -->
