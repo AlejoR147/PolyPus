@@ -15,71 +15,121 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smart.R;
-import com.example.smart.data.model.Expense;
-import com.example.smart.viewmodel.ExpenseViewModel;
+import com.example.smart.data.model.Transaction;
+import com.example.smart.viewmodel.TransactionViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
-import java.util.Objects;
+
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.smart.R;
+import com.example.smart.data.model.Transaction;
+import com.example.smart.viewmodel.TransactionViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private ExpenseViewModel viewModel;
-    //private ExpenseAdapter adapter;
-    private final String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(); // ⚠️ luego reemplazar por FirebaseAuth.getInstance().getCurrentUser().getUid()
+    private TransactionViewModel viewModel;
+    private TransactionAdapter adapter;
+    private String userId;
+
+    private TextView txtTotalIncome;
+    private TextView txtTotalExpenses;
+    private TextView txtBalance;
+    private RecyclerView recyclerTransactions;
 
     @Nullable
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater,
-            @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState
-    ) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        TextView totalIncomeView = view.findViewById(R.id.totalIncome);
-        TextView totalExpenseView = view.findViewById(R.id.totalExpense);
+        txtTotalIncome = view.findViewById(R.id.txtTotalIncome);
+        txtTotalExpenses = view.findViewById(R.id.txtTotalExpenses);
+        txtBalance = view.findViewById(R.id.txtBalance);
+        recyclerTransactions = view.findViewById(R.id.recyclerTransactions);
 
-        //adapter = new ExpenseAdapter(expense -> {
-       //    showEditDeleteDialog(expense);
-       //     return null; // porque en Java las lambdas necesitan retorno si es un SAM
-       // });
+        recyclerTransactions.setLayoutManager(new LinearLayoutManager(requireContext()));
+        adapter = new TransactionAdapter(this::showEditDeleteDialog);
+        recyclerTransactions.setAdapter(adapter);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-       // recyclerView.setAdapter(adapter);
+        viewModel = new ViewModelProvider(this).get(TransactionViewModel.class);
+        userId = FirebaseAuth.getInstance().getCurrentUser() != null
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
+                : "testUser";
 
-        viewModel = new ViewModelProvider(this).get(ExpenseViewModel.class);
-
-        //viewModel.getExpenses().observe(getViewLifecycleOwner(), list -> {
-        //    adapter.submitList(list);
-//
-        //    double[] totals = viewModel.getTotals();
-       //     double income = totals[0];
-      //      double expense = totals[1];
-//
-      //      totalIncomeView.setText("Ingresos: " + income);
-     //       totalExpenseView.setText("Gastos: " + expense);
-    //    });
-
-        viewModel.loadExpenses(userId);
+        viewModel.loadTransactions(userId);
+        observeViewModel();
 
         return view;
     }
 
-    private void showEditDeleteDialog(Expense expense) {
+    private void observeViewModel() {
+        viewModel.getTransactions().observe(getViewLifecycleOwner(), this::updateList);
+        viewModel.getTotalIncome().observe(getViewLifecycleOwner(),
+                value -> txtTotalIncome.setText("Ingresos: " + value));
+        viewModel.getTotalExpenses().observe(getViewLifecycleOwner(),
+                value -> txtTotalExpenses.setText("Gastos: " + value));
+        viewModel.getBalance().observe(getViewLifecycleOwner(),
+                value -> txtBalance.setText("Balance: " + value));
+
+        viewModel.getError().observe(getViewLifecycleOwner(), error -> {
+            if (error != null)
+                Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private void updateList(List<Transaction> list) {
+        adapter.submitList(list);
+    }
+
+    private void showEditDeleteDialog(Transaction transaction) {
+        String[] options = {"Editar", "Eliminar"};
         new AlertDialog.Builder(requireContext())
-                .setTitle(expense.getTitle())
-                .setMessage("¿Qué deseas hacer con este registro?")
-                .setPositiveButton("Editar", (dialog, which) -> {
-                    // Navegar a AddTransactionFragment con datos del gasto
+                .setTitle(transaction.getTitle())
+                .setItems(options, (dialog, which) -> {
+                    if (which == 0) editTransaction(transaction);
+                    else deleteTransaction(transaction);
                 })
-                .setNegativeButton("Eliminar", (dialog, which) -> {
-                    if (expense.getId() != null) {
-                        viewModel.deleteExpense(userId, expense.getId());
-                    }
+                .show();
+    }
+
+    private void editTransaction(Transaction transaction) {
+        Toast.makeText(requireContext(), "Editar " + transaction.getTitle(), Toast.LENGTH_SHORT).show();
+    }
+
+    private void deleteTransaction(Transaction transaction) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Eliminar transacción")
+                .setMessage("¿Seguro que deseas eliminar '" + transaction.getTitle() + "'?")
+                .setPositiveButton("Sí", (dialog, which) -> {
+                    viewModel.deleteTransaction(userId, transaction.getId());
+                    Toast.makeText(requireContext(), "Eliminado", Toast.LENGTH_SHORT).show();
                 })
-                .setNeutralButton("Cancelar", null)
+                .setNegativeButton("No", null)
                 .show();
     }
 }

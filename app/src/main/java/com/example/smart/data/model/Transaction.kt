@@ -1,12 +1,11 @@
 package com.example.smart.data.model
 
-import com.google.firebase.firestore.DocumentId
-
-data class Expense(
-    @DocumentId
+data class Transaction(
     val id: String = "",
     val title: String = "",
+    val description: String = "",
     val category: String = "",
     val amount: Double = 0.0,
+    val type: String = "", // "income" o "gasto"
     val date: Long = System.currentTimeMillis()
 )

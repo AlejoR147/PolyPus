@@ -9,33 +9,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.smart.ui.DatosFragment;
 import com.example.smart.ui.HomeFragment;
-import com.example.smart.ui.ShortsFragment;
-import com.example.smart.ui.SubscripcionsFragment;
-import com.example.smart.ui.libraryFragment;
+import com.example.smart.ui.DatosFragment;
+import com.example.smart.ui.AddTransactionFragment;
+import com.example.smart.ui.comunidadFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
-
     private DrawerLayout drawerLayout;
     private BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
     private FirebaseAuth mAuth;
-
-
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -99,19 +94,19 @@ public class HomeActivity extends AppCompatActivity {
 
                 } else if (id == R.id.shorts) {
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_layout, new ShortsFragment())
+                            .replace(R.id.fragment_layout, new DatosFragment())
                             .commit();
                     return true;
 
                 } else if (id == R.id.library) {
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_layout, new libraryFragment())
+                            .replace(R.id.fragment_layout, new comunidadFragment())
                             .commit();
                     return true;
 
                 } else if (id == R.id.subscriptions) {
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_layout, new SubscripcionsFragment())
+                            .replace(R.id.fragment_layout, new AddTransactionFragment())
                             .commit();
                     return true;
                 }

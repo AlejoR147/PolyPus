@@ -60,4 +60,5 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.recyclerview)
     implementation(libs.kotlinx.coroutines.play.services)
+    implementation(libs.mpandroidchart)
 }
