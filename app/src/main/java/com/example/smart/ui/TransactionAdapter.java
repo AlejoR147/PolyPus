@@ -1,5 +1,6 @@
 package com.example.smart.ui;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,8 +62,16 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         void bind(final Transaction transaction, final OnItemClickListener listener) {
             txtTitle.setText(transaction.getTitle());
             txtCategory.setText(transaction.getCategory());
+
             String sign = transaction.getType().equals("gasto") ? "-" : "+";
-            txtAmount.setText(sign + transaction.getAmount());
+            txtAmount.setText(sign + transaction.getAmount() + "$");
+
+            // 🔹 Cambiar color según el tipo
+            if (transaction.getType().equals("gasto")) {
+                txtAmount.setTextColor(Color.parseColor("#FF3D3D")); // rojo
+            } else {
+                txtAmount.setTextColor(Color.parseColor("#7BFF00")); // verde
+            }
 
             itemView.setOnClickListener(v -> listener.onItemClick(transaction));
         }

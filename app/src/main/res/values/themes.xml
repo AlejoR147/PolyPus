@@ -18,7 +18,7 @@
         <item name="android:statusBarColor">@color/blue</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowLightStatusBar">true</item> <!-- íconos oscuros en status bar -->
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@color/fondo</item>
         <!-- Hace transparente la barra de navegación -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentNavigation">true</item>

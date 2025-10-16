@@ -2,30 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="12dp"
+    android:gravity="center_vertical"
     android:background="?android:attr/selectableItemBackground"
-    android:layout_marginBottom="4dp">
+    android:layout_marginBottom="6dp">
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:text="Título"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!-- 🔹 Imagen al lado izquierdo -->
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/lofa"/>
 
-    <TextView
-        android:id="@+id/txtCategory"
-        android:text="Categoría"
-        android:textSize="14sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!-- 🔹 Contenedor del texto -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/txtAmount"
-        android:text="$0"
-        android:textSize="14sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtTitle"
+            android:text="Título"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtCategory"
+            android:text="Categoría"
+            android:textSize="14sp"
+            android:textColor="#D0D0D0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtAmount"
+            android:text="$0"
+            android:textSize="14sp"
+            android:textColor="#36D1FF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

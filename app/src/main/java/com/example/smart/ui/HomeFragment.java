@@ -90,11 +90,11 @@ public class HomeFragment extends Fragment {
     private void observeViewModel() {
         viewModel.getTransactions().observe(getViewLifecycleOwner(), this::updateList);
         viewModel.getTotalIncome().observe(getViewLifecycleOwner(),
-                value -> txtTotalIncome.setText("Ingresos: " + value));
+                value -> txtTotalIncome.setText("$" + value));
         viewModel.getTotalExpenses().observe(getViewLifecycleOwner(),
-                value -> txtTotalExpenses.setText("Gastos: " + value));
+                value -> txtTotalExpenses.setText("$" + value));
         viewModel.getBalance().observe(getViewLifecycleOwner(),
-                value -> txtBalance.setText("Balance: " + value));
+                value -> txtBalance.setText("$" + value));
 
         viewModel.getError().observe(getViewLifecycleOwner(), error -> {
             if (error != null)
