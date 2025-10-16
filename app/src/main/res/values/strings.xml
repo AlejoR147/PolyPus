@@ -12,4 +12,21 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name">Name</string>
+    <string name="search">Search</string>
+    <string name="notifications">Notifications</string>
+    <string name="total">Total</string>
+    <string name="_000_000_00">$000,000.00</string>
+    <string name="ingresos">Ingresos</string>
+    <string name="_000_0">$000.0</string>
+    <string name="transacci_n">Transacción</string>
+    <string name="_000_00">$000.00</string>
+    <string name="send">Enviar</string>
+    <string name="recibir">Recibir</string>
+    <string name="convertir">Convertir</string>
+    <string name="transferencia_rapida">Transferencia rapida</string>
+    <string name="ver_m_s">Ver más</string>
+    <string name="enviar">enviar</string>
+    <string name="Enviar">Enviar</string>
+    <string name="Recibir">Recibir</string>
+    <string name="Convertir">Convertir</string>
 </resources>
