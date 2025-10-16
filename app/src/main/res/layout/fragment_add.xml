@@ -1,68 +1,122 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="8dp"
     android:padding="20dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_margin="16dp">
 
         <EditText
             android:id="@+id/etTitle"
-            android:hint="Título"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:layout_marginBottom="16dp"
+            android:autofillHints="no"
+            android:background="@drawable/semi_white_bg"
+            android:hint="@string/t_tulo"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="8dp" />
 
         <EditText
             android:id="@+id/etDescription"
-            android:hint="Descripción (opcional)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine" />
+            android:layout_marginBottom="16dp"
+            android:autofillHints="no"
+            android:background="@drawable/semi_white_bg"
+            android:hint="@string/descripci_n_opcional"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:padding="8dp" />
 
         <!-- 🔹 Spinner para categorías -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Categoría"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp" />
-
-        <Spinner
-            android:id="@+id/spCategory"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:padding="6dp"
+            android:background="@drawable/semi_white_bg"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etAmount"
-            android:hint="Monto"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/categor_a"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+            <EditText
+                android:id="@+id/etAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:autofillHints="no"
+                android:hint="@string/monto"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:layout_marginTop="10dp" />
+            android:layout_height="match_parent">
 
-        <RadioButton
-            android:id="@+id/rbIncome"
-            android:text="Ingreso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/rbExpense"
-            android:text="Gasto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rbIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/semi_white_bg"
+                    android:padding="16dp"
+                    android:text="@string/ingreso" />
+
+                <RadioButton
+                    android:id="@+id/rbExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/semi_white_bg"
+                    android:padding="16dp"
+                    android:text="@string/gasto" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/btnSave"
-            android:text="Guardar Transacción"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:padding="16dp"
+            android:text="@string/guardar_transacci_n" />
+
     </LinearLayout>
 </ScrollView>
