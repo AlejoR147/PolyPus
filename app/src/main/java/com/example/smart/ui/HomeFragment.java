@@ -1,7 +1,10 @@
 package com.example.smart.ui;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +63,21 @@ public class HomeFragment extends Fragment {
     private TextView txtBalance;
     private RecyclerView recyclerTransactions;
 
+    // NUEVO:
+    private TextView textRotatingMessages;
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private int index = 0;
+    private final long intervalo = 3000; // 3 segundos
+
+    // Mensajes personalizados
+    private final String[] mensajes = new String[]{
+            "Bienvenido 👋",
+            "Revisa tus finanzas fácilmente 💰",
+            "Controla tus gastos y ahorra más 🧾",
+            "Tu balance se actualiza en tiempo real 🔄"
+    };
+
+    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -71,6 +89,10 @@ public class HomeFragment extends Fragment {
         txtTotalExpenses = view.findViewById(R.id.txtTotalExpenses);
         txtBalance = view.findViewById(R.id.txtBalance);
         recyclerTransactions = view.findViewById(R.id.recyclerTransactions);
+
+        // NUEVO:
+        textRotatingMessages = view.findViewById(R.id.textRotatingMessages);
+        startChangingMessages(); // Iniciar rotación
 
         recyclerTransactions.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new TransactionAdapter(this::showEditDeleteDialog);
@@ -85,6 +107,27 @@ public class HomeFragment extends Fragment {
         observeViewModel();
 
         return view;
+    }
+
+    // NUEVO MÉTODO: cambia el texto periódicamente
+    private void startChangingMessages() {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                textRotatingMessages.setText(mensajes[index]);
+                textRotatingMessages.setAlpha(0f);
+                textRotatingMessages.animate().alpha(1f).setDuration(600).start();
+
+                index = (index + 1) % mensajes.length;
+                handler.postDelayed(this, intervalo);
+            }
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        handler.removeCallbacksAndMessages(null); // detener rotación
     }
 
     private void observeViewModel() {
