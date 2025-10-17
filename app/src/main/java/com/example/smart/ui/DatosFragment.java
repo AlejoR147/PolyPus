@@ -1,6 +1,8 @@
 package com.example.smart.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.smart.R;
 import com.example.smart.viewmodel.TransactionViewModel;
 import com.example.smart.data.model.Transaction;
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,45 +33,68 @@ public class DatosFragment extends Fragment {
     private PieChart pieChart;
     private TransactionViewModel viewModel;
 
-    public DatosFragment() {
-        // Constructor vacío requerido
-    }
+    public DatosFragment() {}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // Inflar el layout del fragmento
         View view = inflater.inflate(R.layout.fragment_datos, container, false);
 
-        // Referencias UI
         pieChart = view.findViewById(R.id.pieChart);
 
-        // ViewModel
+        // 🎨 Configuración visual
+        pieChart.setUsePercentValues(true);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setHoleRadius(45f);
+        pieChart.setTransparentCircleRadius(50f);
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.animateY(1400, Easing.EaseInOutQuad);
+
+        // 🧠 ViewModel
         viewModel = new ViewModelProvider(requireActivity()).get(TransactionViewModel.class);
 
-        // Observar los cambios en las transacciones
+        // ⚙️ Obtener UID del usuario
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userId = (auth.getCurrentUser() != null)
+                ? auth.getCurrentUser().getUid()
+                : "testUser";
+
+        // 🔹 Cargar transacciones
+        viewModel.loadTransactions(userId);
+
+        // 🔹 Observar cambios
         viewModel.getTransactions().observe(getViewLifecycleOwner(), this::updatePieChart);
 
         return view;
     }
 
-    /** Actualiza el gráfico circular con los datos de Firestore */
+    /** 🔹 Actualiza el gráfico circular con los datos de gasto agrupados por categoría */
     private void updatePieChart(List<Transaction> transactions) {
         if (transactions == null || transactions.isEmpty()) {
             pieChart.clear();
             pieChart.setNoDataText("Sin datos disponibles");
+            Log.w("DatosFragment", "No hay transacciones para mostrar.");
             return;
         }
 
         // Agrupar gastos por categoría
         Map<String, Double> categoryTotals = new HashMap<>();
         for (Transaction t : transactions) {
-            if ("gasto".equalsIgnoreCase(t.getType())) {
-                categoryTotals.put(t.getCategory(),
-                        categoryTotals.getOrDefault(t.getCategory(), 0.0) + t.getAmount());
+            Log.d("DatosFragment", "Transacción: " + t.getTitle() + " | Tipo: " + t.getType() + " | Categoría: " + t.getCategory() + " | Monto: " + t.getAmount());
+
+            if (t.getType() != null && t.getType().equalsIgnoreCase("gasto")) {
+                String category = t.getCategory() != null ? t.getCategory() : "Sin categoría";
+                categoryTotals.put(category, categoryTotals.getOrDefault(category, 0.0) + t.getAmount());
             }
+        }
+
+        if (categoryTotals.isEmpty()) {
+            pieChart.clear();
+            pieChart.setNoDataText("No hay gastos para mostrar");
+            Log.w("DatosFragment", "No hay gastos en las transacciones.");
+            return;
         }
 
         // Crear entradas del gráfico
@@ -81,10 +108,11 @@ public class DatosFragment extends Fragment {
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         dataSet.setValueTextSize(14f);
         dataSet.setSliceSpace(2f);
+        dataSet.setValueTextColor(Color.WHITE);
 
         // Asignar datos al gráfico
         PieData pieData = new PieData(dataSet);
         pieChart.setData(pieData);
-        pieChart.invalidate(); // Refrescar
+        pieChart.invalidate(); // 🔄 Refrescar gráfico
     }
 }
