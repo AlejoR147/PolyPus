@@ -1,6 +1,7 @@
 package com.example.smart.ui;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -47,9 +49,9 @@ public class DatosFragment extends Fragment {
         // 🎨 Configuración visual
         pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setHoleRadius(45f);
+        pieChart.setHoleRadius(40f);
         pieChart.setTransparentCircleRadius(50f);
-        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.setEntryLabelColor(Color.WHITE);
         pieChart.animateY(1400, Easing.EaseInOutQuad);
 
         // 🧠 ViewModel
@@ -106,12 +108,14 @@ public class DatosFragment extends Fragment {
         // Configurar dataset
         PieDataSet dataSet = new PieDataSet(entries, "Gastos por categoría");
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        dataSet.setValueTextSize(14f);
-        dataSet.setSliceSpace(2f);
+        dataSet.setValueTextSize(20f);
+        dataSet.setSliceSpace(4f);
         dataSet.setValueTextColor(Color.WHITE);
+        dataSet.setValueTypeface(Typeface.DEFAULT_BOLD);
 
         // Asignar datos al gráfico
         PieData pieData = new PieData(dataSet);
+        pieData.setValueFormatter(new PercentFormatter(pieChart)); // ✅ agrega el símbolo %
         pieChart.setData(pieData);
         pieChart.invalidate(); // 🔄 Refrescar gráfico
     }
