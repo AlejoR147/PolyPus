@@ -66,7 +66,13 @@ public class HomeFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        viewModel = new ViewModelProvider(this).get(TransactionViewModel.class);
+        userId = FirebaseAuth.getInstance().getCurrentUser() != null
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
+                : "testUser";
 
+        viewModel.loadTransactions(userId);
+        observeViewModel();
         txtTotalIncome = view.findViewById(R.id.txtTotalIncome);
         txtTotalExpenses = view.findViewById(R.id.txtTotalExpenses);
         txtBalance = view.findViewById(R.id.txtBalance);
