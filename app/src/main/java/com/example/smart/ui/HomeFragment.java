@@ -61,7 +61,6 @@ public class HomeFragment extends Fragment {
     private TextView txtTotalIncome;
     private TextView txtTotalExpenses;
     private TextView txtBalance;
-    private RecyclerView recyclerTransactions;
 
     // NUEVO:
     private TextView textRotatingMessages;
@@ -88,7 +87,7 @@ public class HomeFragment extends Fragment {
         txtTotalIncome = view.findViewById(R.id.txtTotalIncome);
         txtTotalExpenses = view.findViewById(R.id.txtTotalExpenses);
         txtBalance = view.findViewById(R.id.txtBalance);
-        recyclerTransactions = view.findViewById(R.id.recyclerTransactions);
+        RecyclerView recyclerTransactions = view.findViewById(R.id.recyclerTransactions);
 
         // NUEVO:
         textRotatingMessages = view.findViewById(R.id.textRotatingMessages);
@@ -109,7 +108,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    // NUEVO MÉTODO: cambia el texto periódicamente
+    // NUEVO MÉTOD: cambia el texto predicament
     private void startChangingMessages() {
         handler.post(new Runnable() {
             @Override
