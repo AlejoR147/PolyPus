@@ -9,16 +9,16 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/baseline_home_24"
             android:tint="@color/blue"
-            android:title="Home"/>
+            android:title="Casa"/>
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/baseline_settings_24"
             android:tint="@color/blue"
-            android:title="Settings"/>
+            android:title="Configuraciones"/>
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/baseline_info_24"
-            android:title="About Us"/>
+            android:title="Sobre nosotros"/>
     </group>
     <item
         android:title="">
@@ -26,7 +26,7 @@
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/baseline_exit_to_app_24"
-                android:title="Logout"/>
+                android:title="Cerrar sesión"/>
         </menu>
     </item>
 </menu>

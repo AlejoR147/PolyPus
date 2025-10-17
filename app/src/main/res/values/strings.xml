@@ -19,6 +19,7 @@
     <string name="gasto">Gasto</string>
     <string name="guardar_transacci_n">Guardar Transacción</string>
     <string name="Deuda">Deuda</string>
+    <string name="proximamente">Proximamente...</string>
     <string-array name="transaction_types">
         <item>Income</item>
         <item>Expense</item>

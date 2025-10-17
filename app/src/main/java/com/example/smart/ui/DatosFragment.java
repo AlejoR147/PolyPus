@@ -77,11 +77,18 @@ public class DatosFragment extends Fragment {
         if (transactions == null || transactions.isEmpty()) {
             pieChart.clear();
             pieChart.setNoDataText("Sin datos disponibles");
-            Log.w("DatosFragment", "No hay transacciones para mostrar.");
-            return;
-        }
 
-        // Agrupar gastos por categoría
+            // ✅ Personalizar el texto de "sin datos"
+            pieChart.getPaint(PieChart.PAINT_INFO).setTextSize(60f); // tamaño grande
+            pieChart.getPaint(PieChart.PAINT_INFO).setColor(Color.GRAY);
+            pieChart.getPaint(PieChart.PAINT_INFO).setTypeface(Typeface.DEFAULT_BOLD);
+
+            Log.w("DatosFragment", "No hay transacciones para mostrar.");
+            pieChart.invalidate();
+            return;}
+
+
+            // Agrupar gastos por categoría
         Map<String, Double> categoryTotals = new HashMap<>();
         for (Transaction t : transactions) {
             Log.d("DatosFragment", "Transacción: " + t.getTitle() + " | Tipo: " + t.getType() + " | Categoría: " + t.getCategory() + " | Monto: " + t.getAmount());
