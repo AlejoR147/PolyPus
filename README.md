@@ -40,7 +40,7 @@ En el primer lanzamiento de la app, se espera que cuente con algunas funcionalid
 | Funcionalidad | Estado |
 |---------------|--------|
 | Registro de gastos | ✅ |
-| Metas de ahorro    | ✅ |
+| Metas de ahorro    | ❌  |
 | Conexión bancaria  | ❌ |
 >[!Note]
 >En un futuro puede que se agreguen más funciones.
