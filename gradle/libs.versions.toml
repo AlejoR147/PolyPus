@@ -22,6 +22,8 @@ coroutines-play-services = "1.8.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

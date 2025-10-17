@@ -2,7 +2,8 @@
     <string name="app_name" translatable="false">PolyPus</string>
     <string name="contrase_a">Contraseña</string>
     <string name="correo_electronico">Correo electronico</string>
-    <string name="inicio_de_sesion">Inicio de sesión</string>ss
+    <string name="inicio_de_sesion">Inicio de sesión</string>
+    <string name="default_notification_channel_id">Conquista el futuro con gastos pensados.</string>
     <string name="iniciar_sesion">iniciar sesion</string>
     <string name="smart_finance">smart finance</string>
     <string name="registrarse">Registrarse</string>

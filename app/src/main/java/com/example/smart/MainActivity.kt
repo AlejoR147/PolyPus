@@ -3,7 +3,9 @@ package com.example.smart
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -16,20 +18,33 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.smart.R.layout.inicio_sesion
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import android.Manifest
+import androidx.activity.result.contract.ActivityResultContracts
 
 class
 MainActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
-    private lateinit var authLayaout : ConstraintLayout
+    private lateinit var authLayaout: ConstraintLayout
     private lateinit var loginButton: Button
     private lateinit var textView: TextView
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            Toast.makeText(this, "Permiso de notificaciones concedido ✅", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "No se mostrarán notificaciones ❌", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +59,8 @@ MainActivity : AppCompatActivity() {
         authLayaout = findViewById(R.id.auth_layaout)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.auth_layaout)) { v, insets ->
-            val systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+            val systemBars =
+                insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
@@ -84,9 +100,9 @@ MainActivity : AppCompatActivity() {
             showHome(email, ProviderType.valueOf(provider))
         }
     }
+
     private fun setup() {
         title = "Autenticación"
-
 
 
         // 🔹 Botón de LOGIN
@@ -131,5 +147,35 @@ MainActivity : AppCompatActivity() {
         finish() // Cierra la actividad actual
     }
 
+    private fun askNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    // Permiso ya otorgado
+                }
 
+                shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
+                    // Puedes mostrar un diálogo explicativo aquí si quieres
+                    AlertDialog.Builder(this)
+                        .setTitle("Permiso necesario")
+                        .setMessage("Se necesita permiso para mostrar notificaciones importantes.")
+                        .setPositiveButton("Aceptar") { _, _ ->
+                            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                }
+
+                else -> {
+                    // Solicita directamente el permiso
+                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        }
+    }
 }
+
+

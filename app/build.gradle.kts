@@ -69,4 +69,6 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.mpandroidchart)
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.messaging)
 }
