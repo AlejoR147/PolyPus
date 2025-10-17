@@ -50,7 +50,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    implementation("org.quanqi:android-holo-graph:0.1.0")
+    implementation(libs.android.holo.graph)
 
     implementation(libs.firebase.auth)
     implementation(libs.androidx.credentials)

@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+androidHoloGraph = "0.1.0"
 kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -21,6 +22,7 @@ recyclerview = "1.3.2"
 coroutines-play-services = "1.8.1"
 
 [libraries]
+android-holo-graph = { module = "org.quanqi:android-holo-graph", version.ref = "androidHoloGraph" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
