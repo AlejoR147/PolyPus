@@ -16,10 +16,6 @@
             android:tint="@color/blue"
             android:title="Settings"/>
         <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/baseline_share_24"
-            android:title="Share"/>
-        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/baseline_info_24"
             android:title="About Us"/>

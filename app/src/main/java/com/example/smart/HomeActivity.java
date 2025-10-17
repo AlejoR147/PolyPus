@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -136,12 +137,23 @@ public class HomeActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
+                } else if (id == R.id.nav_about) {
+                // Abrir enlace en navegador
+                String url = "https://github.com/AlejoR147/PolyPus";
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+            }else if (id == R.id.nav_home) {
+                    // Abrir enlace en navegador
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_layout, new HomeFragment())
+                            .commit();
+                    return true;
                 }
-
                 // Cerrar el drawer después de seleccionar
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
+
         });
 
         // Fragmento por defecto al abrir la app
