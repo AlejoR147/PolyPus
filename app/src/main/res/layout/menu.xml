@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:src="@drawable/baseline_add_24"
+                android:src="@drawable/smart_toy_24dp_1f1f1f_fill1_wght400_grad0_opsz24"
                 app:layout_anchor="@id/bottomAppBar"
                 app:maxImageSize="40dp"
                 app:tint="@color/blue"/>

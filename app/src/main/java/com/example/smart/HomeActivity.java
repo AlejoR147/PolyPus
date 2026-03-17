@@ -17,19 +17,20 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.smart.ui.ConfigFragment;
 import com.example.smart.ui.DatosFragment;
 import com.example.smart.ui.HomeFragment;
-import com.example.smart.ui.DatosFragment;
 import com.example.smart.ui.AddTransactionFragment;
 import com.example.smart.ui.comunidadFragment;
+import com.example.smart.ui.fragment_chatBot;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
-    private BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
     private FirebaseAuth mAuth;
 
@@ -69,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         // Inicializar vistas
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         toolbar = findViewById(R.id.toolbar);
 
         // Configurar toolbar con el drawer
@@ -82,6 +83,15 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_layout, new fragment_chatBot())
+                        .commit();
+            }
+        });
         // Listener para el BottomNavigationView (usamos if-else en vez de switch)
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -99,6 +109,8 @@ public class HomeActivity extends AppCompatActivity {
                             .replace(R.id.fragment_layout, new DatosFragment())
                             .commit();
                     return true;
+
+
 
                 } else if (id == R.id.library) {
                     getSupportFragmentManager().beginTransaction()
@@ -149,7 +161,13 @@ public class HomeActivity extends AppCompatActivity {
                             .replace(R.id.fragment_layout, new HomeFragment())
                             .commit();
                     return true;
-                }
+                }else if (id == R.id.nav_settings) {
+                // Abrir enlace en navegador
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_layout, new ConfigFragment())
+                        .commit();
+                return true;
+            }
                 // Cerrar el drawer después de seleccionar
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
